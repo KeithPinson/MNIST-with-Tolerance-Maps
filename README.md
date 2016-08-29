@@ -22,13 +22,13 @@ This project is meant to explore tolerance, we use
 a well known and well researched machine learning database
 of 60,000 handwritten digits.
 
-<center><label>![](file:\\\C:\Users\keith\Downloads\qs-mnist.png)<br/>
+<center><label>![](https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist-sample.jpg?raw=true)<br/>
 Sample of MINST digits<label></center><br/>
 
 Each digit in the database has been normalized to roughly
 the same size and centered on a grid of 28x28 pixels.
 
-<center><label>![](file:\\\C:\Users\keith\Downloads\mnist_input_0.gif)<br/>
+<center><label>![](https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0.gif?raw=true)<br/>
 Anti-aliased gray-scale digit<label></center><br/>
 
 The best machine learning methods are about 9,973 correct out
@@ -58,13 +58,13 @@ to a particalar tolerance map, is then presumed to be that
 particular digit.
 
 <table><tr><td>
-<center><label><img src="file:\\\C:\Users\keith\Downloads\mnist_input_0-3d.png"/><br/>
+<center><label><img src="https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0-3d.png?raw=true"/><br/>
 3D representation of MNIST input #0, the number 5<label></center>
 </td><td>
-<center><label><img src="file:\\\C:\Users\keith\Downloads\mnist_input_0_tolerance-3d.png"/><br/>
+<center><label><img src="https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0_tolerance-3d.png?raw=true"/><br/>
 3D representation of a tolerance map for the number 5<label></center>
 </td></tr></table>
 
 
-<center><label>![](file:\\\C:\Users\keith\Downloads\mnist_input_0-tolmap-animated.gif)<br/>
+<center><label>![](https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0-tolmap-animated.gif?raw=true)<br/>
 3D representation of a tolerance map for the number 5<label></center><br/>
