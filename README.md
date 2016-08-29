@@ -28,7 +28,7 @@ Sample of MINST digits<label></center><br/>
 Each digit in the database has been normalized to roughly
 the same size and centered on a grid of 28x28 pixels.
 
-<center><label>![](https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0.gif?raw=true)<br/>
+<center><label><img width="500px" src="https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0.gif?raw=true" /><br/>
 Anti-aliased gray-scale digit<label></center><br/>
 
 The best machine learning methods are about 9,973 correct out
@@ -67,4 +67,4 @@ particular digit.
 
 
 <center><label>![](https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0-tolmap-animated.gif?raw=true)<br/>
-3D representation of a tolerance map for the number 5<label></center><br/>
+3D tolerance map animated to better see its heights<label></center><br/>
