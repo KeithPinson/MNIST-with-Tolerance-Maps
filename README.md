@@ -53,10 +53,6 @@ With a tolerance map, each pixel in the image represents
 a tolerance: from no-tolerance (no ink should be here) to
 high-tolerance (highly probable ink will be here).
 
-For the MNIST test dataset, a test digit that matches closest
-to a particalar tolerance map, is then presumed to be that
-particular digit.
-
 <table><tr><td>
 <center><label><img src="https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0-3d.png?raw=true"/><br/>
 3D representation of MNIST input #0, the number 5<label></center>
@@ -65,6 +61,13 @@ particular digit.
 3D representation of a tolerance map for the number 5<label></center>
 </td></tr></table>
 
-
 <center><label>![](https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0-tolmap-animated.gif?raw=true)<br/>
-3D tolerance map animated to better see its heights<label></center><br/>
+3D tolerance map animated to better see the pixel heights<label></center><br/>
+
+For the MNIST training dataset, the tolerance map is an additional
+layer of information used to shade the importance of each pixel.
+During training it is thought the tolerance map would be used 
+as a kind of preprocessing step to a well defined machine learning
+method.
+  
+
