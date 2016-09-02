@@ -22,14 +22,14 @@ This project is meant to explore tolerance, we use
 a well known and well researched machine learning database
 of 60,000 handwritten digits.
 
-<center><label>![](https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist-sample.jpg?raw=true)<br/>
-Sample of MINST digits<label></center><br/>
+<figure><img src="https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist-sample.jpg?raw=true" />
+<figcaption>Sample of MINST digits</figcaption></figure>
 
 Each digit in the database has been normalized to roughly
 the same size and centered on a grid of 28x28 pixels.
 
-<center><label><img width="500px" src="https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0.gif?raw=true" /><br/>
-Anti-aliased gray-scale digit<label></center><br/>
+<figure><img width="500px" src="https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0.gif?raw=true" />
+<figcaption>Anti-aliased gray-scale digit</figcaption></figure>
 
 The best machine learning methods are about 9,973 correct out
 10,000. It is thought human accuracy is about 9,980 out of
@@ -54,15 +54,15 @@ a tolerance: from no-tolerance (no ink should be here) to
 high-tolerance (highly probable ink will be here).
 
 <table><tr><td>
-<center><label><img src="https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0-3d.png?raw=true"/><br/>
-3D representation of MNIST input #0, the number 5<label></center>
+<figure><img src="https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0-3d.png?raw=true" />
+<figcaption>3D representation of MNIST input #0, the number 5</figcaption></figure>
 </td><td>
-<center><label><img src="https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0_tolerance-3d.png?raw=true"/><br/>
-3D representation of a tolerance map for the number 5<label></center>
+<figure><img src="https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0_tolerance-3d.png?raw=true" />
+<figcaption>3D representation of a tolerance map for the number 5</figcaption></figure>
 </td></tr></table>
 
-<center><label>![](https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0-tolmap-animated.gif?raw=true)<br/>
-3D tolerance map animated to better see the pixel heights<label></center><br/>
+<figure><img src="https://github.com/KeithPinson/MNIST-with-Tolerance-Maps/blob/master/Resources/mnist_input_0-tolmap-animated.gif?raw=true" />
+<figcaption>3D tolerance map animated to better see the pixel heights</figcaption></figure>
 
 For the MNIST training dataset, the tolerance map is an additional
 layer of information used to shade the importance of each pixel.
