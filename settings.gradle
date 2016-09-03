@@ -1,4 +1,5 @@
 rootProject.name = 'MNISTwithToleranceMap'
+
 include ':Android'
 
 project(':Android').projectDir = new File(settingsDir, 'Apps/Android')
