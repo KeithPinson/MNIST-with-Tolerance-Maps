@@ -127,7 +127,7 @@ luac.out
 *.dex
 
 # Java class files
-*.class
+# *.class
 
 # Generated files
 bin/
@@ -145,7 +145,7 @@ local.properties
 proguard/
 
 # Log Files
-*.log
+# *.log
 
 # Android Studio Navigation editor temp files
 .navigation/
@@ -155,8 +155,8 @@ captures/
 
 # Intellij
 *.iml
-.idea/workspace.xml
-.idea/libraries
+# .idea/workspace.xml
+# .idea/libraries
 
 # Keystore files
 *.jks
