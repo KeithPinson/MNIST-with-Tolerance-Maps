@@ -12,8 +12,62 @@
     tools:context="com.keithpinson.mnistwithtolerancemaps.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="MNIST"
+            android:layout_gravity="center_horizontal" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="337dp">
+
+            <ImageView
+                android:layout_width="280dp"
+                android:layout_height="280dp"
+                android:id="@+id/imageView"
+                android:layout_gravity="center_horizontal|center_vertical" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout"
+            android:gravity="center_vertical|bottom">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Train"
+                android:id="@+id/button_train"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test"
+                android:id="@+id/button_test"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Accuracy: "
+            android:id="@+id/text_result"/>
+
+    </LinearLayout>
+
 </RelativeLayout>
