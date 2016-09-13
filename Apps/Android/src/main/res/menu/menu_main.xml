@@ -9,4 +9,11 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
 -->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_inbox"
+            android:checked="true"
+            android:icon="@android:drawable/ic_menu_view"
+            android:title="@string/faw_eye"/>
+    </group>
 </menu>

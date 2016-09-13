@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">MNIST with Tolerance Maps</string>
+    <string name="mnist_image">MNIST Image</string>
 
     <!-- Drawer Items -->
     <string name="drawer_item_options_header">Options</string>
-    <string name="drawer_item_tolerance_maps">Using Tolerance Maps</string>
+    <string name="drawer_item_tolerance_maps">Use Tolerance Maps</string>
     <string name="drawer_item_alternate_styles">With Alternate Styles</string>
 
     <string name="drawer_item_method_header">ML Method</string>
@@ -12,5 +13,8 @@
     <string name="drawer_item_help">Help</string>
     <string name="drawer_item_about">About</string>
     <string name="drawer_item_contact">Contact</string>
+
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
 
 </resources>
