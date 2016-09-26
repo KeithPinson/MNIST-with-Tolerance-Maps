@@ -1,6 +1,8 @@
 package com.keithpinson.mnistwithtolerancemaps;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -11,32 +13,42 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.WindowDecorActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.interfaces.OnCheckedChangeListener;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
+import com.mikepenz.materialdrawer.model.SwitchDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.Nameable;
+import com.mikepenz.octicons_typeface_library.Octicons;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar = null;
+    private Snackbar snackbar = null;
     private Drawer drawer = null;
-    private PrimaryDrawerItem tolMapCheckbox = null;
-    private PrimaryDrawerItem altStylesCheckbox = null;
+    private SwitchDrawerItem tolMapCheckbox = null;
+    private SwitchDrawerItem altStylesCheckbox = null;
 
+    private MnistTolMap mnistTolMap = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        mnistTolMap = new MnistTolMap();
 
         //
         // Title
@@ -60,21 +72,14 @@ public class MainActivity extends AppCompatActivity {
         //
         // Menu
         //
-/*
-        drawer = new DrawerBuilder().
-                    withActivity(this).
-                    withActionBarDrawerToggle(true).
-                    withToolbar(toolbar).
-                    build();
-*/
-        tolMapCheckbox = new PrimaryDrawerItem().withName(R.string.drawer_item_tolerance_maps).withIcon(FontAwesome.Icon.faw_check_square_o);
-        altStylesCheckbox = new PrimaryDrawerItem().withName(R.string.drawer_item_alternate_styles).withIcon(FontAwesome.Icon.faw_check_square_o);
+
+        tolMapCheckbox = new SwitchDrawerItem().withIdentifier(1).withName(R.string.drawer_item_tolerance_maps).withIcon(Octicons.Icon.oct_tools).withChecked(mnistTolMap.useTolMap(this)).withOnCheckedChangeListener(onCheckedChangeListener);
+        altStylesCheckbox = new SwitchDrawerItem().withIdentifier(2).withName(R.string.drawer_item_alternate_styles).withIcon(Octicons.Icon.oct_tools).withChecked(false).withOnCheckedChangeListener(onCheckedChangeListener);
 
         drawer = new DrawerBuilder()
                 .withActivity(this)
                 .withActionBarDrawerToggle(true)
                 .withToolbar(toolbar)
-                .withFullscreen(true)
                 .addDrawerItems(
                         new SectionDrawerItem().withName(R.string.drawer_item_options_header),
                         tolMapCheckbox,
@@ -97,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 })
+                .withSelectedItem(-1)
+                .withTranslucentStatusBar(false)
                 .withSavedInstance(savedInstanceState)
                 .build();
 
@@ -109,8 +116,17 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if (snackbar == null) {
+                    snackbar = Snackbar.make( view, "Training...", Snackbar.LENGTH_LONG);
+                    snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
+                }
+
+                if (snackbar.isShown()) {
+                    snackbar.dismiss();
+                }
+                else {
+                    snackbar.setAction("Action", null).show();
+                }
             }
         });
 
@@ -118,6 +134,26 @@ public class MainActivity extends AppCompatActivity {
         // Content
         //
     }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer != null && drawer.isDrawerOpen()) {
+            drawer.closeDrawer();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    private OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
+            if (drawerItem instanceof Nameable) {
+                Log.i("material-drawer", "DrawerItem: " + drawerItem.getIdentifier() + " " + (isChecked ? "checked" : "unchecked") );
+            } else {
+                Log.i("material-drawer", "toggleChecked: " + isChecked);
+            }
+        }
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) { return false; }  // Not using options menu
