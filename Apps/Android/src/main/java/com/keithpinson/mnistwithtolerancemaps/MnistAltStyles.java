@@ -11,24 +11,23 @@ import com.keithpinson.mnistwithtolerancemaps.Mnist;
  *
  */
 
-class MnistTolMap extends Mnist {
+public class MnistAltStyles extends Mnist {
+    boolean useAltStyles(Context context) {
 
-    boolean useTolMap(Context context) {
-
-        boolean result = true;
+        boolean result = false;
 
         if (context != null) {
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-            result = sharedPref.getBoolean("useToleranceMap", true);
+            result = sharedPref.getBoolean("useAltStyles", false);
         }
 
         return result;
     }
 
-    void setTolMap( boolean useTolMap, Context context) {
+    void setAltStyles( boolean useAltStyles, Context context) {
         if (context != null) {
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-            sharedPref.edit().putBoolean("useToleranceMap", useTolMap).apply();
+            sharedPref.edit().putBoolean("useAltStyles", useAltStyles).apply();
         }
     }
 }

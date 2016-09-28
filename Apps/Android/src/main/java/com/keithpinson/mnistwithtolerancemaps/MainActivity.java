@@ -1,8 +1,7 @@
 package com.keithpinson.mnistwithtolerancemaps;
 
-import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -41,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private SwitchDrawerItem altStylesCheckbox = null;
 
     private MnistTolMap mnistTolMap = null;
+    private MnistAltStyles mnistAltStyles = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mnistTolMap = new MnistTolMap();
+        mnistAltStyles = new MnistAltStyles();
 
         //
         // Title
@@ -73,8 +74,13 @@ public class MainActivity extends AppCompatActivity {
         // Menu
         //
 
-        tolMapCheckbox = new SwitchDrawerItem().withIdentifier(1).withName(R.string.drawer_item_tolerance_maps).withIcon(Octicons.Icon.oct_tools).withChecked(mnistTolMap.useTolMap(this)).withOnCheckedChangeListener(onCheckedChangeListener);
-        altStylesCheckbox = new SwitchDrawerItem().withIdentifier(2).withName(R.string.drawer_item_alternate_styles).withIcon(Octicons.Icon.oct_tools).withChecked(false).withOnCheckedChangeListener(onCheckedChangeListener);
+        boolean usingTolMap = mnistTolMap.useTolMap(getApplicationContext());
+        boolean usingAltStyles = mnistAltStyles.useAltStyles(getApplicationContext());
+
+        tolMapCheckbox = new SwitchDrawerItem().withIdentifier(1).withName(R.string.drawer_item_tolerance_maps).withIcon(Octicons.Icon.oct_tools).withChecked(usingTolMap).withOnCheckedChangeListener(onCheckedChangeListener);
+
+        altStylesCheckbox = new SwitchDrawerItem().withIdentifier(2).withName(R.string.drawer_item_alternate_styles).withIcon(Octicons.Icon.oct_tools).withChecked(usingAltStyles).withOnCheckedChangeListener(onCheckedChangeListener);
+        altStylesCheckbox.withEnabled(usingTolMap); // Disable this option if Tolerance Maps disabled
 
         drawer = new DrawerBuilder()
                 .withActivity(this)
@@ -147,10 +153,24 @@ public class MainActivity extends AppCompatActivity {
     private OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
-            if (drawerItem instanceof Nameable) {
-                Log.i("material-drawer", "DrawerItem: " + drawerItem.getIdentifier() + " " + (isChecked ? "checked" : "unchecked") );
-            } else {
-                Log.i("material-drawer", "toggleChecked: " + isChecked);
+            if (drawerItem instanceof Nameable && mnistTolMap != null && mnistAltStyles != null) {
+                int id = (int)(drawerItem.getIdentifier());
+
+                switch( id ) {
+                    case 1:
+                        mnistTolMap.setTolMap(isChecked, getApplicationContext());
+
+                        altStylesCheckbox.withEnabled(isChecked);
+                        altStylesCheckbox.withSwitchEnabled(isChecked);
+
+                        drawer.updateItem(altStylesCheckbox);
+
+                    case 2:
+                        mnistAltStyles.setAltStyles(isChecked, getApplicationContext());
+                    default:
+                }
+
+                Log.i("material-drawer", "DrawerItem: " + id + " " + (isChecked ? "checked" : "unchecked") );
             }
         }
     };
