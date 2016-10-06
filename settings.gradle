@@ -1,5 +1,5 @@
 rootProject.name = 'MNISTwithToleranceMap'
 
-include ':Android'
+include ':Android', ':gen-torch'
 
 project(':Android').projectDir = new File(settingsDir, 'Apps/Android')
