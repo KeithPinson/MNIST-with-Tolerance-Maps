@@ -71,3 +71,25 @@ as a kind of preprocessing step to a well defined machine learning
 method.
   
 
+# A Note on luaconf.h
+
+By design Android does not predefine the locale variables. This can cause
+a number of undefined reference errors. In order to get Lua to compile two
+changes have been made to Lua. First the luaconf.h file was modified by
+changing:
+
+    #include <limits.h>
+    #include <stddef.h>
+
+to:
+
+    #include <limits.h>
+    #include <stddef.h>
+
+    #if defined(ANDROID)
+    #include "landroidconf.h"
+    #endif
+
+And then the file `landroidconf.h` with the definitions that Lua will need
+to compile was added to the Lua package.
+

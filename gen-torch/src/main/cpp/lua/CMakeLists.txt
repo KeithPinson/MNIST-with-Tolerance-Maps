@@ -6,10 +6,16 @@ cmake_minimum_required(VERSION 3.4.1)
 
 set(CMAKE_VERBOSE_MAKEFILE on)
 
-# find_library( ANDROID_LIBRARIES android )
-MESSAGE(STATUS "\n\n\t>>> Including android directory: ${ANDROID_NDK_SYSROOT_INCLUDE}\n\n\n")
+# Let CMake find the include and lib paths
+find_library( ANDROID_LIBRARIES android )
+find_path( ANDROID_INCLUDES android )
+
+message(STATUS "\n\t\tAndroid Includes Directory: ${ANDROID_INCLUDES}\n")
+
+include_directories(${ANDROID_INCLUDES})
 
 file(GLOB lua_SRC
+    "src/landroidconf.c"
 	"src/lapi.c"
 	"src/lcode.c"
 	"src/lctype.c"

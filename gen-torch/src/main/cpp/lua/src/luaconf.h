@@ -11,6 +11,11 @@
 #include <limits.h>
 #include <stddef.h>
 
+#if defined(ANDROID)
+#include "landroidconf.h"
+#endif
+
+
 
 /*
 ** ===================================================================
@@ -50,7 +55,6 @@
 #if !defined(LUA_USE_C89) && defined(_WIN32) && !defined(_WIN32_WCE)
 #define LUA_USE_WINDOWS  /* enable goodies for regular Windows */
 #endif
-
 
 #if defined(LUA_USE_WINDOWS)
 #define LUA_DL_DLL	/* enable support for DLL */
